@@ -108,8 +108,8 @@ handler('call-history', function() {
                 <th>Call Duration</th>
                 <th>Record Duration</th>
                 <th>Recording</th>
-                <th>GeoLocation (From)</th>
                 <th>GeoLocation (To)</th>
+                <th>GeoLocation (From)</th>
             </tr>';
 
     foreach (call_list() as $id => $call) {
@@ -244,12 +244,28 @@ handler('create-call', function() {
             <button type="button" class="btn btn-primary" onclick="call();"><i class="icon-headphones icon-white"></i> Call</button>
             <button type="button" class="btn btn-danger" onclick="hangup();"><i class="icon-off icon-white"></i> Hangup</button>
             </div>
+            <div style="margin-top: 10px;">
+            <button type="button" onclick="sendKey(\'0\');">0</button>
+            <button type="button" onclick="sendKey(\'1\');">1</button>
+            <button type="button" onclick="sendKey(\'2\');">2</button>
+            <button type="button" onclick="sendKey(\'3\');">3</button>
+            <button type="button" onclick="sendKey(\'4\');">4</button>
+            <button type="button" onclick="sendKey(\'5\');">5</button>
+            <button type="button" onclick="sendKey(\'6\');">6</button>
+            <button type="button" onclick="sendKey(\'7\');">7</button>
+            <button type="button" onclick="sendKey(\'8\');">8</button>
+            <button type="button" onclick="sendKey(\'9\');">9</button>
+            <button type="button" onclick="sendKey(\'*\');">*</button>
+            <button type="button" onclick="sendKey(\'#\');">#</button>
+            </div>
         </form>
 
         <h2>Activity</h2>
         <pre id="log">Waiting...</pre>
 
         <script type="text/javascript">
+
+        var connection = null;
 
         $(document).ready(function() {
 
@@ -279,12 +295,17 @@ handler('create-call', function() {
         function call() {
 
             var params = {"PhoneNumber": $("#number").val()};
-            Twilio.Device.connect(params);
+            connection = Twilio.Device.connect(params);
         }
 
         function hangup() {
 
             Twilio.Device.disconnectAll();
+        }
+
+        function sendKey(digit) {
+
+            if (connection) connection.sendDigits(digit);
         }
 
         </script>
@@ -349,6 +370,20 @@ handler('default', function() {
             <button type="button" id="btn-answer" disabled="disabled" class="btn btn-success" onclick="answer();"><i class="icon-headphones icon-white"></i> Answer</button>
             <button type="button" id="btn-hangup" disabled="disabled" class="btn btn-danger" onclick="hangup();"><i class="icon-off icon-white"></i> Hangup</button>
             </div>
+            <div style="margin-top: 10px;">
+            <button type="button" onclick="sendKey(\'0\');">0</button>
+            <button type="button" onclick="sendKey(\'1\');">1</button>
+            <button type="button" onclick="sendKey(\'2\');">2</button>
+            <button type="button" onclick="sendKey(\'3\');">3</button>
+            <button type="button" onclick="sendKey(\'4\');">4</button>
+            <button type="button" onclick="sendKey(\'5\');">5</button>
+            <button type="button" onclick="sendKey(\'6\');">6</button>
+            <button type="button" onclick="sendKey(\'7\');">7</button>
+            <button type="button" onclick="sendKey(\'8\');">8</button>
+            <button type="button" onclick="sendKey(\'9\');">9</button>
+            <button type="button" onclick="sendKey(\'*\');">*</button>
+            <button type="button" onclick="sendKey(\'#\');">#</button>
+            </div>
         </form>
 
         <h2>Activity</h2>
@@ -407,6 +442,11 @@ handler('default', function() {
             $("#btn-answer").attr("disabled", "disabled");
 
             if (connection) connection.accept();
+        }
+
+        function sendKey(digit) {
+
+            if (connection) connection.sendDigits(digit);
         }
 
         </script>
