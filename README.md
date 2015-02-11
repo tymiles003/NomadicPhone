@@ -14,7 +14,7 @@ Why use this webapp?
 - Email notification when you got a phone call or a SMS
 - Choose what you want to do on incoming calls:
   - Send everything to the voicemail
-  - Redirect the call to another phone number, by example a local prepaid phone
+  - Redirect the call to another phone number, for example a local prepaid phone
   - Answer directly to the call inside your browser
 
 ### You are minimalist, you don't use a mobile phone but you need a phone number for banks and public services
@@ -24,8 +24,8 @@ Why use this webapp?
 
 ### You live in many countries, you need to have a local phone number for each one
 
-- By example, I have a bank account in France and another one in Canada, so I need a local phone number for each country
-- I want to call my family from oversea but I don't like Skype and my mum don't know how to use Skype, my mum can use a real phone...
+- For example, I have a bank account in France and another one in Canada, so I need a local phone number for each country
+- I want to call my family from oversea but I don't like Skype and my mum doesn't know how to use Skype, my mum can use a real phone...
 - Use a local Twilio phone number for each country and make calls locally with your browser
 
 Features
@@ -50,7 +50,7 @@ Requirements
 - PHP >= 5.3
 - PDO (Sqlite)
 - HTML5 browser
-- Headphone or integrated micro (work on a Macbook Air)
+- Headphone or integrated micro (works on a Macbook Air)
 - Twilio Account
 
 Todo
